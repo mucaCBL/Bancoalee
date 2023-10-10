@@ -1,0 +1,209 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="cadastroUsuario.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Banco</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.login-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.form button:hover,.form button:active,.form button:focus {
+  background: #43A047;
+}
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.form .message a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+.form .register-form {
+  display: none;
+}
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.container:before, .container:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.container .info {
+  margin: 50px auto;
+  text-align: center;
+}
+.container .info h1 {
+  margin: 0 0 15px;
+  padding: 0;
+  font-size: 36px;
+  font-weight: 300;
+  color: #1a1a1a;
+}
+.container .info span {
+  color: #4d4d4d;
+  font-size: 12px;
+}
+.container .info span a {
+  color: #000000;
+  text-decoration: none;
+}
+.container .info span .fa {
+  color: #EF3B3A;
+}
+body {
+  background: #76b852; /* fallback for old browsers */
+  background: rgb(141,194,111);
+  background: linear-gradient(90deg, rgba(141,194,111,1) 0%, rgba(118,184,82,1) 50%);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="input-group mb-1 gnome">
+                <span class="input-group-text" id="sp_nome"><i class="fa-solid fa-id-card"></i></span>
+                <input th:text="${nome}" id="nome" name="nome" type="text" class="form-control"
+                       placeholder="Nome completo"
+                       aria-label="nome"
+                       aria-describedby="sp_nome"/>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="input-group mb-1 gdata_nascimento">
+                <span class="input-group-text" id="sp_nascimento"><i class="fa-solid fa-id-card"></i></span>
+                <input th:text="${data_nascimento}" id="data_nascimento" name="data_nascimento" type="date"
+                       class="form-control" placeholder="data_nascimento"
+                       aria-label="data_nascimento"
+                       aria-describedby="sp_data_nascimento"/>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="input-group mb-1 gCPF">
+                <span class="input-group-text" id="sp_CPF"><i class="fa-solid fa-id-card"></i></span>
+                <input th:text="${CPF}" id="CPF" name="CPF" type="text" class="form-control" placeholder="CPF"
+                       aria-label="CPF"
+                       aria-describedby="sp_CPF"/>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="input-group mb-1 gRG">
+                <span class="input-group-text" id="sp_RG"><i class="fa-solid fa-id-card"></i></span>
+                <input th:text="${RG}" id="RG" name="RG" type="text" class="form-control" placeholder="RG"
+                       aria-label="RG"
+                       aria-describedby="sp_RG"/>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="input-group mb-1 gnumero_celular">
+                <span class="input-group-text" id="sp_numero_celular"><i class="fa-solid fa-id-card"></i></span>
+                <input th:text="${numero_celular}" id="numero_celular" name="numero_celular" type="text"
+                       class="form-control" placeholder="numero_celular"
+                       aria-label="numero_celular"
+                       aria-describedby="sp_numero_celular"/>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="input-group mb-1 gemail">
+                <span class="input-group-text" id="sp_email"><i class="fa-solid fa-id-card"></i></span>
+                <input th:text="${email}" id="email" name="email" type="text" class="form-control" placeholder="email"
+                       aria-label="email"
+                       aria-describedby="sp_email"/>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="input-group mb-1 gsenha">
+                <span class="input-group-text" id="sp_senha"><i class="fa-solid fa-id-card"></i></span>
+                <input th:text="${senha}" id="senha" name="senha" type="text"
+                       class="form-control" placeholder="senha"
+                       aria-label="senha"
+                       aria-describedby="sp_senha"/>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="input-group mb-1 gCEP">
+                <span class="input-group-text" id="sp_CEP"><i class="fa-solid fa-id-card"></i></span>
+                <input th:text="${CEP}" id="CEP" name="CEP" type="text" class="form-control" placeholder="CEP"
+                       aria-label="CEP"
+                       aria-describedby="sp_CEP"/>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="input-group mb-1 gcidade">
+                <span class="input-group-text" id="sp_cidade"><i class="fa-solid fa-id-card"></i></span>
+                <input th:text="${cidade}" id="cidade" name="cidade" type="text" class="form-control"
+                       placeholder="cidade"
+                       aria-label="cidade"
+                       aria-describedby="sp_cidade"/>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="input-group mb-1 gestado">
+                <span class="input-group-text" id="sp_estado"><i class="fa-solid fa-id-card"></i></span>
+                <input th:text="${estado}" id="estado" name="estado" type="text" class="form-control"
+                       placeholder="estado"
+                       aria-label="estado"
+                       aria-describedby="sp_estado"/>
+            </div>
+            <div class="col-12 text-end">
+                <a id="enviar" class="btn btn-lg btn-primary mt-3">Cadastrar</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
